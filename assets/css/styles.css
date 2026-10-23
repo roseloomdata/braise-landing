@@ -961,3 +961,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   html.chat-open .w-composer input { font-size: 16px; } /* avoids iOS zoom on focus */
 }
 @keyframes sheet-up { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+/* menu link colours must not leak into the call-to-action buttons */
+.nav .nav__cta .btn--grad, .nav .nav__cta .btn--grad:hover { color: #fff; }
+.nav .nav__cta .btn--outline, .nav .nav__cta .btn--outline:hover { color: var(--ink); }
+.nav .nav__cta .btn { font-size: 16px; }
