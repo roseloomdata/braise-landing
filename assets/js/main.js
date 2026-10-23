@@ -23,7 +23,7 @@
     }
     // Dashboard straightens up as the user scrolls; nothing to do once it's flat
     if (device && !reduceMotion) {
-      const max = window.innerWidth < 960 ? 10 : 18;
+      const max = window.innerWidth < 640 ? 4 : window.innerWidth < 960 ? 10 : 18;
       const tilt = Math.round(max * (1 - Math.min(y / 420, 1)) * 10) / 10;
       if (tilt !== lastTilt) {
         lastTilt = tilt;
@@ -120,6 +120,8 @@
     // every view gets the height of the tallest one so the page never jumps
     const dash = $(".dash");
     dash.style.removeProperty("--view-h");
+    // on small screens the tab bar is hidden, so only the home view is ever shown
+    if (!dash.querySelector(".dash__side").offsetParent) return;
     let max = 0;
     dashViews.forEach((v) => {
       const wasHidden = v.hidden;

@@ -838,3 +838,14 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   .v-cal { grid-template-columns: 30px repeat(3, 1fr); }
   .v-day:nth-child(n+5) { display: none; }
 }
+
+/* ---------- Mobile polish ---------- */
+@media (max-width: 960px) {
+  .dash__view[data-view="home"] { min-height: 0; }
+}
+@media (max-width: 640px) {
+  .device { --tilt: 4deg; margin-top: 40px; }
+  .dash__grid .panel--center { display: none; }
+  .plan__desc, .plan__price { min-height: 0; }
+  .snippet code { font-size: 12px; }
+}
