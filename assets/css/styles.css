@@ -948,3 +948,16 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 .chatbox .wm__input { margin: 0; padding: 5px 5px 5px 14px; border-radius: 999px; border: 1px solid var(--line); background: #fdfbf8; font-size: 13.5px; }
 .chatbox .wm__send { width: 32px; height: 32px; }
 .chatbox .wm__foot { padding: 10px 12px 12px; background: #fff; border-top: 1px solid var(--line); }
+
+/* ---------- Chat widget: full screen on phones ---------- */
+@media (max-width: 640px) {
+  html.chat-open { overflow: hidden; }
+  html.chat-open .widget { inset: 0; right: 0; bottom: 0; gap: 0; }
+  html.chat-open .widget__launcher, html.chat-open .widget__nudge { display: none; }
+  html.chat-open .widget__panel { position: fixed; inset: 0; width: 100%; height: 100vh; height: 100dvh; border: 0; border-radius: 0; box-shadow: none; animation: sheet-up .28s cubic-bezier(.2,.8,.2,1) both; }
+  html.chat-open .wm__head--live { padding-top: calc(16px + env(safe-area-inset-top)); }
+  html.chat-open .wm__body--live { flex: 1; height: auto; min-height: 0; }
+  html.chat-open .widget__form { padding-bottom: calc(10px + env(safe-area-inset-bottom)); }
+  html.chat-open .w-composer input { font-size: 16px; } /* avoids iOS zoom on focus */
+}
+@keyframes sheet-up { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }

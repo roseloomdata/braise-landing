@@ -358,6 +358,7 @@
 
   const setWidget = (open) => {
     panel.hidden = !open;
+    document.documentElement.classList.toggle("chat-open", open);
     launcher.setAttribute("aria-expanded", String(open));
     launcher.setAttribute("aria-label", open ? "Fermer le chat" : "Ouvrir le chat");
     if (!open) return;
