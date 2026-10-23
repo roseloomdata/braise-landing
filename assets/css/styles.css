@@ -905,7 +905,6 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   html.menu-open { overflow: hidden; }
   html.menu-open .header { background: #fff; box-shadow: 0 1px 0 var(--line); backdrop-filter: none; -webkit-backdrop-filter: none; }
   html.menu-open .widget { display: none; }
-  html.menu-open .header__cta > .btn { opacity: 0; pointer-events: none; }
 }
 
 /* ---------- Chat bubbles, refined (live widget) ---------- */
