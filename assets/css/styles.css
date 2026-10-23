@@ -867,7 +867,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 .w-msg { display: flex; align-items: flex-end; gap: 8px; }
 .w-msg .bubble { margin: 0; }
 .w-msg__avatar { flex-shrink: 0; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 9px; background: var(--grad); }
-.w-msg__avatar svg { width: 13px; height: 16px; }
+.w-msg__avatar svg { width: 15px; height: 18px; }
 .wm__body--live .bubble { font-size: 13.5px; max-width: 82%; }
 .wm__body--live .bubble--bot { border-bottom-left-radius: 6px; }
 .widget__form { display: block; padding: 10px 12px 8px; background: #fff; border-top: 1px solid var(--line); }

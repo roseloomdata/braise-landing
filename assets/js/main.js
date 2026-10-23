@@ -335,7 +335,7 @@
   ];
   const fallback = "Bonne question ! Sur votre site, je répondrais à partir de vos propres contenus. Ici je suis en démo : essayez « tarifs », « installation » ou « RGPD ».";
 
-  const ardiMini = '<span class="w-msg__avatar" aria-hidden="true"><svg viewBox="4 2 36 44"><use href="#ardi-body" fill="#fff"/></svg></span>';
+  const ardiMini = '<span class="w-msg__avatar" aria-hidden="true"><svg viewBox="4 2 36 44"><use href="#ardi-body" fill="#fff"/><circle cx="21.8" cy="30" r="2.2" fill="#e8501e"/><circle cx="28.2" cy="30" r="2.2" fill="#e8501e"/></svg></span>';
   // bot messages in the live widget carry Ardi's avatar, like a real chat
   const botRow = (el) => {
     const row = document.createElement("div");
