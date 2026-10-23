@@ -927,3 +927,9 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 .typing__dots span:nth-child(3) { background: var(--c3); animation-delay: .3s; }
 @keyframes typing { 0%, 60%, 100% { transform: translateY(0); opacity: .45; } 30% { transform: translateY(-5px); opacity: 1; } }
 .wm__body--live .bubble--typing, .chatbox .bubble--typing { padding: 12px 15px; }
+/* the legacy ".bubble--typing span" dot rule must not shrink the wrapper */
+.bubble--typing .typing__dots { width: auto; height: 14px; border-radius: 0; background: none; animation: none; opacity: 1; }
+.bubble--typing .typing__dots span { width: 7px; height: 7px; animation: typing 1.2s ease-in-out infinite; }
+.bubble--typing .typing__dots span:nth-child(1) { background: var(--c1); }
+.bubble--typing .typing__dots span:nth-child(2) { background: var(--c2); animation-delay: .15s; }
+.bubble--typing .typing__dots span:nth-child(3) { background: var(--c3); animation-delay: .3s; }
