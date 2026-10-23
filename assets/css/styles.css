@@ -918,3 +918,12 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 .w-msg__avatar { width: 24px; height: 24px; border-radius: 8px; margin-bottom: 2px; }
 .w-msg__avatar svg { width: 14px; height: 17px; }
 .wm__body--live .bubble--typing { padding: 13px 14px; }
+
+/* ---------- Typing indicator ---------- */
+.bubble--typing { display: inline-flex; align-items: center; }
+.typing__dots { display: inline-flex; align-items: center; gap: 5px; height: 14px; }
+.typing__dots span { width: 7px; height: 7px; border-radius: 50%; background: var(--c1); animation: typing 1.2s ease-in-out infinite; }
+.typing__dots span:nth-child(2) { background: var(--c2); animation-delay: .15s; }
+.typing__dots span:nth-child(3) { background: var(--c3); animation-delay: .3s; }
+@keyframes typing { 0%, 60%, 100% { transform: translateY(0); opacity: .45; } 30% { transform: translateY(-5px); opacity: 1; } }
+.wm__body--live .bubble--typing, .chatbox .bubble--typing { padding: 12px 15px; }

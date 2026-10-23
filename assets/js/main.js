@@ -181,7 +181,8 @@
   const addTyping = (body) => {
     const t = document.createElement("div");
     t.className = "bubble bubble--bot bubble--typing";
-    t.innerHTML = "<span></span><span></span><span></span>";
+    t.setAttribute("aria-label", "Ardi écrit…");
+    t.innerHTML = '<span class="typing__dots"><span></span><span></span><span></span></span>';
     body.appendChild(t);
     body.scrollTop = body.scrollHeight;
     return t;
