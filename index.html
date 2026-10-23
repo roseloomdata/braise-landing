@@ -80,7 +80,11 @@
         <a href="#resultats">Résultats</a>
         <a href="#tarifs">Tarifs</a>
         <a href="#faq">FAQ</a>
-        <a href="#" class="nav__login">Connexion</a>
+        <div class="nav__cta">
+          <a href="#tarifs" class="btn btn--grad btn--lg btn--block"><span>Essai gratuit</span><span class="btn__orb"><svg><use href="#i-arrow"/></svg></span></a>
+          <a href="#" class="btn btn--outline btn--lg btn--block">Connexion</a>
+          <p>Sans carte bancaire · Prêt en 10 minutes</p>
+        </div>
       </nav>
 
       <div class="header__cta">
@@ -927,15 +931,24 @@
         <div><b>Ardi</b><small><i></i>L'assistant de Braise · en ligne</small></div>
         <button class="widget__close" id="widgetClose" aria-label="Fermer">✕</button>
       </div>
-      <div class="wm__body wm__body--live" id="widgetBody" aria-live="polite"></div>
-      <div class="widget__chips" id="widgetChips">
-        <button>Combien ça coûte ?</button>
-        <button>C'est long à installer ?</button>
-        <button>Et le RGPD ?</button>
+      <div class="wm__body wm__body--live" id="widgetBody" aria-live="polite">
+        <div class="w-intro">
+          <span class="w-intro__avatar"><svg viewBox="4 2 36 44"><use href="#ardi-body" fill="#fff"/><circle cx="21.8" cy="30" r="1.9" fill="#e8501e"/><circle cx="28.2" cy="30" r="1.9" fill="#e8501e"/></svg></span>
+          <b>Bonjour, je suis Ardi</b>
+          <p>Posez-moi vos questions sur Braise : tarifs, installation, données… Je réponds en quelques secondes.</p>
+        </div>
+        <div class="widget__chips" id="widgetChips">
+          <button type="button"><span>Combien ça coûte ?</span><svg><use href="#i-arrow"/></svg></button>
+          <button type="button"><span>C'est long à installer ?</span><svg><use href="#i-arrow"/></svg></button>
+          <button type="button"><span>Et le RGPD ?</span><svg><use href="#i-arrow"/></svg></button>
+        </div>
       </div>
       <form class="widget__form" id="widgetForm">
-        <input type="text" id="widgetInput" placeholder="Écrivez votre message…" autocomplete="off" aria-label="Votre message" />
-        <button type="submit" aria-label="Envoyer"><svg><use href="#i-send"/></svg></button>
+        <div class="w-composer">
+          <input type="text" id="widgetInput" placeholder="Écrivez votre message…" autocomplete="off" aria-label="Votre message" />
+          <button type="submit" aria-label="Envoyer"><svg><use href="#i-send"/></svg></button>
+        </div>
+        <p class="w-brand">Propulsé par <b>Braise</b></p>
       </form>
     </div>
     <button class="widget__launcher" id="widgetLauncher" aria-label="Ouvrir le chat" aria-expanded="false">

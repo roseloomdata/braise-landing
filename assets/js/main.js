@@ -43,6 +43,7 @@
   const nav = $("#nav");
   const setMenu = (open) => {
     nav.classList.toggle("is-open", open);
+    document.documentElement.classList.toggle("menu-open", open);
     burger.setAttribute("aria-expanded", String(open));
     burger.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
   };
@@ -322,7 +323,6 @@
   const wBody = $("#widgetBody");
   const form = $("#widgetForm");
   const input = $("#widgetInput");
-  let greeted = false;
 
   // Canned answers for the demo; the real product answers from the customer's content.
   const answers = [
@@ -335,11 +335,24 @@
   ];
   const fallback = "Bonne question ! Sur votre site, je répondrais à partir de vos propres contenus. Ici je suis en démo : essayez « tarifs », « installation » ou « RGPD ».";
 
+  const ardiMini = '<span class="w-msg__avatar" aria-hidden="true"><svg viewBox="4 2 36 44"><use href="#ardi-body" fill="#fff"/></svg></span>';
+  // bot messages in the live widget carry Ardi's avatar, like a real chat
+  const botRow = (el) => {
+    const row = document.createElement("div");
+    row.className = "w-msg";
+    row.innerHTML = ardiMini;
+    wBody.insertBefore(row, el);
+    row.appendChild(el);
+    return row;
+  };
+
   async function botReply(text) {
     const t = addTyping(wBody);
+    const tRow = botRow(t);
     await wait(700 + Math.min(text.length * 8, 900));
-    t.remove();
-    addBubble(wBody, text, "bot");
+    tRow.remove();
+    botRow(addBubble(wBody, text, "bot"));
+    wBody.scrollTop = wBody.scrollHeight;
   }
 
   const setWidget = (open) => {
@@ -348,16 +361,13 @@
     launcher.setAttribute("aria-label", open ? "Fermer le chat" : "Ouvrir le chat");
     if (!open) return;
     widget.classList.add("has-opened");
-    if (!greeted) {
-      greeted = true;
-      botReply("Bonjour ! Je suis Ardi, l'assistant de Braise. Une question ? Je réponds en direct.");
-    }
     setTimeout(() => input.focus(), 50);
   };
 
   function ask(text) {
     const msg = text.trim();
     if (!msg) return;
+    $("#widgetChips")?.remove();
     addBubble(wBody, msg, "user");
     const match = answers.find(([re]) => re.test(msg));
     botReply(match ? match[1] : fallback);
