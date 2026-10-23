@@ -938,3 +938,13 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 .bubble--typing .typing__dots { gap: 4px; height: 10px; }
 .bubble--typing .typing__dots span { width: 5px; height: 5px; }
 @keyframes typing { 0%, 60%, 100% { transform: translateY(0); opacity: .45; } 30% { transform: translateY(-3px); opacity: 1; } }
+
+/* ---------- Installation demo chat: same refined bubbles and composer as the live widget ---------- */
+.chatbox .wm__body { gap: 10px; padding: 16px 14px; background: #fbf9f8; }
+.chatbox .bubble { max-width: 80%; padding: 10px 14px; font-size: 13.5px; line-height: 1.5; border-radius: 18px; }
+.chatbox .bubble--bot { background: #fff; border: 0; border-bottom-left-radius: 6px; box-shadow: 0 1px 2px rgba(22, 17, 15, .06), 0 4px 14px -8px rgba(22, 17, 15, .12); color: var(--text); }
+.chatbox .bubble--user { border-bottom-right-radius: 6px; box-shadow: 0 6px 14px -8px rgba(232, 80, 30, .6); font-weight: 500; }
+.chatbox .bubble__cta { border-radius: 12px; font-size: 12.5px; padding: 8px 12px; }
+.chatbox .wm__input { margin: 0; padding: 5px 5px 5px 14px; border-radius: 999px; border: 1px solid var(--line); background: #fdfbf8; font-size: 13.5px; }
+.chatbox .wm__send { width: 32px; height: 32px; }
+.chatbox .wm__foot { padding: 10px 12px 12px; background: #fff; border-top: 1px solid var(--line); }

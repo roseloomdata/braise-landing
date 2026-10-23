@@ -191,11 +191,11 @@
   // ---------- Installation: scripted chat + step cycling ----------
   const stageChat = $("#stageChat");
   const script = [
-    ["bot", "Bonjour ! Vous cherchez à refaire votre site ou à le faire évoluer ?"],
-    ["user", "Le refaire. Vous faites aussi le SEO ?"],
+    ["bot", "Bonjour ! Vous cherchez à refaire votre site ou à le faire évoluer ?"],
+    ["user", "Le refaire. Vous faites aussi le SEO ?"],
     ["bot", "Oui, chaque refonte inclut l'optimisation SEO. Les projets démarrent à 2 500 €."],
-    ["user", "Ok, je peux en parler avec quelqu'un ?"],
-    ["bot", 'Bien sûr ! Jeudi 10h, ça vous va ?<span class="bubble__cta"><svg><use href="#i-cal"/></svg>Réserver jeudi à 10h</span>', true],
+    ["user", "Ok, je peux en parler avec quelqu'un ?"],
+    ["bot", 'Bien sûr ! Jeudi 10h, ça vous va ?<span class="bubble__cta"><svg><use href="#i-cal"/></svg>Réserver jeudi à 10h</span>', true],
   ];
 
   async function playStage() {
@@ -334,7 +334,7 @@
     [/@/, "Merci ! C'est noté, vous recevrez une proposition de créneau très vite."],
     [/bonjour|salut|hello|coucou/i, "Bonjour ! Je peux vous parler des tarifs, de l'installation ou de la sécurité des données."],
   ];
-  const fallback = "Bonne question ! Sur votre site, je répondrais à partir de vos propres contenus. Ici je suis en démo : essayez « tarifs », « installation » ou « RGPD ».";
+  const fallback = "Bonne question ! Sur votre site, je répondrais à partir de vos propres contenus. Ici je suis en démo : essayez « tarifs », « installation » ou « RGPD ».";
 
   const ardiMini = '<span class="w-msg__avatar" aria-hidden="true"><svg viewBox="4 2 36 44"><use href="#ardi-body" fill="#fff"/><circle cx="21.8" cy="30" r="2.2" fill="#e8501e"/><circle cx="28.2" cy="30" r="2.2" fill="#e8501e"/></svg></span>';
   // bot messages in the live widget carry Ardi's avatar, like a real chat
