@@ -48,6 +48,15 @@
   };
   burger.addEventListener("click", () => setMenu(!nav.classList.contains("is-open")));
   $$("a", nav).forEach((a) => a.addEventListener("click", () => setMenu(false)));
+  document.addEventListener("click", (e) => {
+    if (nav.classList.contains("is-open") && !nav.contains(e.target) && !burger.contains(e.target)) setMenu(false);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && nav.classList.contains("is-open")) {
+      setMenu(false);
+      burger.focus();
+    }
+  });
 
   // ---------- Reveal on scroll ----------
   const io = new IntersectionObserver(

@@ -849,3 +849,5 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   .plan__desc, .plan__price { min-height: 0; }
   .snippet code { font-size: 12px; }
 }
+.nav__login { display: none; }
+@media (max-width: 960px) { .nav .nav__login { display: block; margin-top: 4px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--c1); font-weight: 600; } }
