@@ -907,3 +907,14 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   html.menu-open .widget { display: none; }
   html.menu-open .header__cta > .btn { opacity: 0; pointer-events: none; }
 }
+
+/* ---------- Chat bubbles, refined (live widget) ---------- */
+.wm__body--live { gap: 12px; }
+.wm__body--live .bubble { max-width: 78%; padding: 10px 14px; font-size: 14px; line-height: 1.5; border-radius: 18px; animation: pop .3s cubic-bezier(.34,1.3,.64,1) both; }
+.wm__body--live .bubble--bot { background: #fff; border: 0; border-bottom-left-radius: 6px; box-shadow: 0 1px 2px rgba(22, 17, 15, .06), 0 4px 14px -8px rgba(22, 17, 15, .12); color: var(--text); }
+.wm__body--live .bubble--user { border-bottom-right-radius: 6px; box-shadow: 0 6px 14px -8px rgba(232, 80, 30, .6); font-weight: 500; }
+.wm__body--live .w-msg .bubble { max-width: calc(100% - 34px); }
+.w-msg { padding-right: 12%; }
+.w-msg__avatar { width: 24px; height: 24px; border-radius: 8px; margin-bottom: 2px; }
+.w-msg__avatar svg { width: 14px; height: 17px; }
+.wm__body--live .bubble--typing { padding: 13px 14px; }
