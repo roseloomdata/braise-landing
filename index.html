@@ -1004,17 +1004,30 @@
           <span class="blob blob--c1"></span>
           <span class="blob blob--c2"></span>
           <div class="cta__inner">
-            <svg class="cta__ardi ardi-live" viewBox="4 2 36 44" aria-hidden="true">
-                      <use href="#ardi-body" fill="#fff"/><use href="#ardi-belly" fill="#ffe2c4"/>
-                      <g transform="translate(25 31.5)">
-                        <g class="ardi-look"><g class="ardi-eyes">
-                          <ellipse cx="-3.2" cy="0" rx="1.8" ry="2.4" fill="#16110f"/><ellipse cx="3.2" cy="0" rx="1.8" ry="2.4" fill="#16110f"/>
-                          <circle cx="-2.6" cy="-.9" r=".65" fill="#fff"/><circle cx="3.8" cy="-.9" r=".65" fill="#fff"/>
-                        </g></g>
-                        <path d="M-1.9 3.6q1.9 1.6 3.8 0" fill="none" stroke="#16110f" stroke-width="1.35" stroke-linecap="round"/>
-                        <g class="ardi-cheeks"><ellipse cx="-5.6" cy="3" rx="1.4" ry=".8" fill="#ff8a3d" opacity=".7"/><ellipse cx="5.6" cy="3" rx="1.4" ry=".8" fill="#ff8a3d" opacity=".7"/></g>
-                      </g>
-                    </svg>
+            <!-- Same fire as the dashboard Ardi, in warm amber so the white mascot stands out on orange -->
+            <div class="ardi-heat ardi-heat--cta" style="--heat: .85" aria-hidden="true">
+              <span class="ardi-heat__glow"></span>
+              <svg class="ardi-heat__fire ardi-heat__fire--outer" viewBox="4 2 36 44">
+                <defs><linearGradient id="fire-cta-o" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe7a8"/><stop offset=".55" stop-color="#ffc56b"/><stop offset="1" stop-color="#ffb547"/></linearGradient></defs>
+                <g class="ardi-heat__flicker"><use href="#ardi-body" fill="url(#fire-cta-o)"/></g>
+              </svg>
+              <svg class="ardi-heat__fire" viewBox="4 2 36 44">
+                <defs><linearGradient id="fire-cta-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff4d6"/><stop offset=".6" stop-color="#ffe0a0"/><stop offset="1" stop-color="#ffc778"/></linearGradient></defs>
+                <g class="ardi-heat__flicker"><use href="#ardi-body" fill="url(#fire-cta-g)"/></g>
+              </svg>
+              <span class="ardi-heat__sparks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+              <svg class="cta__ardi ardi-live" viewBox="4 2 36 44" aria-hidden="true">
+                        <use href="#ardi-body" fill="#fff"/><use href="#ardi-belly" fill="#ffe2c4"/>
+                        <g transform="translate(25 31.5)">
+                          <g class="ardi-look"><g class="ardi-eyes">
+                            <ellipse cx="-3.2" cy="0" rx="1.8" ry="2.4" fill="#16110f"/><ellipse cx="3.2" cy="0" rx="1.8" ry="2.4" fill="#16110f"/>
+                            <circle cx="-2.6" cy="-.9" r=".65" fill="#fff"/><circle cx="3.8" cy="-.9" r=".65" fill="#fff"/>
+                          </g></g>
+                          <path d="M-1.9 3.6q1.9 1.6 3.8 0" fill="none" stroke="#16110f" stroke-width="1.35" stroke-linecap="round"/>
+                          <g class="ardi-cheeks"><ellipse cx="-5.6" cy="3" rx="1.4" ry=".8" fill="#ff8a3d" opacity=".7"/><ellipse cx="5.6" cy="3" rx="1.4" ry=".8" fill="#ff8a3d" opacity=".7"/></g>
+                        </g>
+                      </svg>
+            </div>
             <h2>Votre prochain chantier est déjà sur votre site.</h2>
             <p>Braise peut lui répondre dans 10 minutes.</p>
             <div class="hero__actions">

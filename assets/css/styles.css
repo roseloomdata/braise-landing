@@ -621,7 +621,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   .dash__grid { grid-template-columns: 1fr; }
   .kpi strong { font-size: 18px; }
   .panel--welcome { padding-right: 40%; }
-  .ardi-heat { right: 0; bottom: -26px; transform: scale(.72); transform-origin: 100% 100%; }
+  .panel--welcome .ardi-heat { right: 0; bottom: -26px; transform: scale(.72); transform-origin: 100% 100%; }
   .goal2 strong { font-size: 24px; }
 
   .feature__visual { height: 250px; }
@@ -653,7 +653,13 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 /* ---------- Ardi (brand mascot — never inside the chat widget) ---------- */
 .wm__avatar svg { width: 18px; height: 18px; color: #fff; }
 .sticker--ardi svg { width: 40px; height: 48px; }
-.cta__ardi { width: 84px; height: 102px; margin: 0 auto 20px; animation: bob 6s ease-in-out infinite; filter: drop-shadow(0 14px 22px rgba(150, 45, 0, .35)); overflow: visible; }
+.cta__ardi { position: absolute; left: 50%; bottom: 0; width: 84px; height: 102px; translate: -50% 0; filter: drop-shadow(0 14px 22px rgba(150, 45, 0, .35)); overflow: visible; }
+/* The dashboard's .ardi-heat fire, resized around the CTA mascot */
+.ardi-heat--cta { position: relative; right: auto; bottom: auto; width: 120px; height: 128px; margin: 0 auto 20px; animation: bob 6s ease-in-out infinite; }
+.ardi-heat--cta .ardi-heat__glow { width: 150px; height: 150px; bottom: 4px; background: radial-gradient(closest-side, rgba(255, 236, 190, .65), rgba(255, 200, 120, .22) 55%, transparent); }
+.ardi-heat--cta .ardi-heat__fire { width: 104px; height: 104px; bottom: 10px; }
+.ardi-heat--cta .ardi-heat__fire--outer { bottom: 9px; }
+.ardi-heat--cta .ardi-heat__sparks i { bottom: 92px; background: #fff1d0; box-shadow: 0 0 8px #ffe0a0; }
 
 
 /* ---------- Chat widgets on this site (live demo + installation demo): brand colours ---------- */
