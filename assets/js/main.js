@@ -78,7 +78,7 @@
     (entries) => entries.forEach((e) => e.target.classList.toggle("is-paused", !e.isIntersecting)),
     { rootMargin: "100px 0px" }
   );
-  $$(".hero, .logos, #installation, #resultats").forEach((el) => pauseIo.observe(el));
+  $$(".hero, .logos, #installation").forEach((el) => pauseIo.observe(el));
 
   // ---------- KPI counters ----------
   $$("[data-count]").forEach((el) => {
@@ -99,8 +99,8 @@
   const goalCount = $("#goalCount");
   const heat = $("#ardiHeat");
   if (goalCount && heat) {
-    const GOAL = 30;
-    const DONE = 23;
+    const GOAL = 20;
+    const DONE = 14;
     const render = (n) => {
       goalCount.textContent = n;
       const h = n / GOAL;
@@ -108,7 +108,7 @@
       $("#goalBar").parentElement.style.setProperty("--heat", h.toFixed(3));
       heat.classList.toggle("is-happy", h >= 0.6);
       $("#goalPct").textContent = `${Math.round(h * 100)} %`;
-      $("#goalHint").textContent = n >= GOAL ? "objectif atteint" : `plus que ${GOAL - n} RDV`;
+      $("#goalHint").textContent = n >= GOAL ? "objectif atteint" : `plus que ${GOAL - n} visite${GOAL - n > 1 ? "s" : ""}`;
     };
     if (reduceMotion) render(DONE);
     else {
@@ -191,11 +191,11 @@
   // ---------- Installation: scripted chat + step cycling ----------
   const stageChat = $("#stageChat");
   const script = [
-    ["bot", "Bonjour ! Vous cherchez à refaire votre site ou à le faire évoluer ?"],
-    ["user", "Le refaire. Vous faites aussi le SEO ?"],
-    ["bot", "Oui, chaque refonte inclut l'optimisation SEO. Les projets démarrent à 2 500 €."],
-    ["user", "Ok, je peux en parler avec quelqu'un ?"],
-    ["bot", 'Bien sûr ! Jeudi 10h, ça vous va ?<span class="bubble__cta"><svg><use href="#i-cal"/></svg>Réserver jeudi à 10h</span>', true],
+    ["bot", "Bonjour ! Quel est votre projet : cuisine, salle de bain, chauffage… ?"],
+    ["user", "Refaire notre salle de bain. Vous intervenez à Caluire ?"],
+    ["bot", "Oui, Caluire est dans notre zone. Vous êtes propriétaire de l'appartement ?"],
+    ["user", "Oui. Budget autour de 10 000 €."],
+    ["bot", 'Parfait ! Un conseiller peut passer jeudi à 10h ?<span class="bubble__cta"><svg><use href="#i-cal"/></svg>Réserver la visite jeudi à 10h</span>', true],
   ];
 
   async function playStage() {
@@ -226,6 +226,61 @@
   }, { threshold: 0.3 });
   if (stageChat) stageIo.observe(stageChat);
 
+  // ---------- Trades carousel: chat + photo scenes, dots, swipe, autoplay ----------
+  const showcase = $(".showcase");
+  if (showcase) {
+    const dots = $$(".showcase__dot", showcase);
+    const scenes = $$(".scene", showcase);
+    let current = 0;
+    let manual = false;
+
+    const show = (i) => {
+      current = (i + scenes.length) % scenes.length;
+      dots.forEach((d, k) => {
+        d.classList.toggle("is-active", k === current);
+        if (k === current) d.setAttribute("aria-current", "true");
+        else d.removeAttribute("aria-current");
+      });
+      scenes.forEach((sc, k) => {
+        sc.classList.toggle("is-active", k === current);
+        sc.setAttribute("aria-hidden", String(k !== current));
+      });
+    };
+    const pick = (i) => {
+      manual = true;
+      showcase.classList.remove("is-auto");
+      show(i);
+    };
+    const hold = (on) => showcase.classList.toggle("is-held", on);
+
+    dots.forEach((d, k) => d.addEventListener("click", () => pick(k)));
+
+    // horizontal swipe on touch screens
+    let startX = null;
+    const card = $(".showcase__card", showcase);
+    card.addEventListener("pointerdown", (e) => { if (e.pointerType !== "mouse") startX = e.clientX; });
+    card.addEventListener("pointerup", (e) => {
+      if (startX === null) return;
+      const dx = e.clientX - startX;
+      startX = null;
+      if (Math.abs(dx) > 40) pick(current + (dx < 0 ? 1 : -1));
+    });
+
+    // autoplay until the visitor takes over; paused while hovered or off-screen
+    if (!reduceMotion) {
+      showcase.addEventListener("animationend", (e) => {
+        if (e.animationName === "dot-fill" && !manual) show(current + 1);
+      });
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting && !manual) showcase.classList.add("is-auto");
+        hold(!e.isIntersecting);
+      }, { threshold: 0.4 }).observe(showcase);
+      showcase.addEventListener("mouseenter", () => hold(true));
+      showcase.addEventListener("mouseleave", () => hold(false));
+    }
+    show(0);
+  }
+
   // ---------- Copy the install snippet ----------
   const copyBtn = $("#snippetCopy");
   if (copyBtn) {
@@ -248,11 +303,13 @@
     });
   }
 
-  // ---------- ROI calculator ----------
+  // ---------- ROI calculator: visitors -> quote requests -> signed jobs ----------
   const visitors = $("#visitors");
   const rate = $("#rate");
+  const sign = $("#sign");
   const value = $("#value");
   const UPLIFT = 0.25;
+  const pct = (n, digits = 0) => `${n.toFixed(digits).replace(".", ",")} %`;
 
   const paintRange = (input) => {
     const p = ((input.value - input.min) / (input.max - input.min)) * 100;
@@ -262,18 +319,24 @@
   function updateRoi() {
     const v = +visitors.value;
     const r = +rate.value / 100;
+    const sg = +sign.value / 100;
     const val = +value.value;
-    const extraLeads = Math.round(v * r * UPLIFT);
-    const yearly = extraLeads * val * 12;
+    const extraRequests = v * r * UPLIFT; // per month
+    const extraJobs = Math.round(extraRequests * 12 * sg); // per year
+    const monthly = Math.round(extraRequests);
 
     $("#outVisitors").textContent = fmt.format(v);
-    $("#outRate").textContent = `${(+rate.value).toFixed(1).replace(".", ",")} %`;
+    $("#outRate").textContent = pct(+rate.value, 1);
+    $("#outSign").textContent = pct(+sign.value);
     $("#outValue").textContent = `${fmt.format(val)} €`;
-    $("#resLeads").textContent = `+${fmt.format(extraLeads)}`;
-    $("#resRevenue").textContent = `+${fmt.format(yearly)} €`;
-    [visitors, rate, value].forEach(paintRange);
+    $("#resLeads").textContent = `+${fmt.format(extraJobs)}`;
+    $("#resRequests").textContent = monthly < 1
+      ? "moins d'une demande de devis en plus par mois"
+      : `soit +${fmt.format(monthly)} demande${monthly > 1 ? "s" : ""} de devis par mois`;
+    $("#resRevenue").textContent = `+${fmt.format(extraJobs * val)} €`;
+    [visitors, rate, sign, value].forEach(paintRange);
   }
-  [visitors, rate, value].forEach((el) => el.addEventListener("input", updateRoi));
+  [visitors, rate, sign, value].forEach((el) => el.addEventListener("input", updateRoi));
   updateRoi();
 
   // ---------- Pricing toggle ----------
@@ -327,10 +390,12 @@
 
   // Canned answers for the demo; the real product answers from the customer's content.
   const answers = [
-    [/prix|tarif|co[uû]t|combien|cher|abonnement/i, "Il y a une offre gratuite (50 conversations/mois, sans carte bancaire). Les offres payantes démarrent à 29 €/mois, avec 7 jours d'essai."],
-    [/install|long|temps|minute|wordpress|wix|shopify|webflow|script/i, "Environ 10 minutes : vous indiquez l'adresse de votre site, testez l'assistant, puis collez une ligne de code. Compatible WordPress, Wix, Webflow, Shopify…"],
+    [/prix|tarif|co[uû]t|combien|cher|abonnement/i, "Il y a une offre gratuite (50 conversations/mois, sans carte bancaire). Les offres payantes démarrent à 79 €/mois, avec 14 jours d'essai."],
+    [/install|long|temps|minute|wordpress|wix|webflow|script/i, "Environ 10 minutes : vous indiquez l'adresse de votre site, testez l'assistant, puis collez une ligne de code. Compatible WordPress, Wix, Webflow…"],
     [/rgpd|donn[ée]es|s[ée]curit|h[ée]berg/i, "Toutes les données sont hébergées en France, jamais revendues, et les IP ne sont pas stockées. Les conversations sont conservées 12 mois maximum."],
     [/d[ée]mo|rdv|rendez|appel|parler|contact/i, "Avec plaisir ! Laissez-moi votre e-mail et l'équipe vous propose un créneau de 15 minutes."],
+    [/zone|commune|secteur|d[ée]partement/i, "Vous définissez votre zone d'intervention : Braise prévient poliment les prospects hors zone et ne vous alerte que pour les demandes qui vous concernent."],
+    [/aide|maprimer|cee|subvention/i, "Braise explique les grands principes des aides (MaPrimeRénov', CEE…) sans jamais s'engager sur l'éligibilité : elle renvoie le prospect vers vous pour en parler lors de la visite."],
     [/@/, "Merci ! C'est noté, vous recevrez une proposition de créneau très vite."],
     [/bonjour|salut|hello|coucou/i, "Bonjour ! Je peux vous parler des tarifs, de l'installation ou de la sécurité des données."],
   ];
