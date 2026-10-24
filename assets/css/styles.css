@@ -979,9 +979,10 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 }
 
 /* ---------- Hero: trade badges ---------- */
-.trades { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; list-style: none; margin: 0 0 22px; padding: 0; }
-.trades li { font-size: 13.5px; font-weight: 600; color: var(--ink); padding: 6px 14px; border-radius: 999px; background: rgba(255,255,255,.85); border: 1px solid #ffdcc4; box-shadow: var(--shadow-sm); }
-.trades li::before { content: ""; display: inline-block; width: 6px; height: 6px; margin: 0 8px 2px 0; border-radius: 50%; background: var(--grad); vertical-align: middle; }
+.trades { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; list-style: none; margin: 0 0 24px; padding: 0; }
+.trades li { display: inline-flex; align-items: center; gap: 8px; padding: 7px 15px 7px 11px; border-radius: 999px; background: rgba(255,255,255,.62); border: 1px solid rgba(232, 80, 30, .12); box-shadow: 0 1px 2px rgba(22, 17, 15, .04); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); font-size: 14px; font-weight: 600; letter-spacing: -0.01em; color: var(--text); transition: background .2s, border-color .2s, transform .2s; }
+.trades li:hover { background: #fff; border-color: rgba(232, 80, 30, .25); transform: translateY(-1px); }
+.trades svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--c1); }
 
 
 /* ---------- Integrations: WhatsApp & SMS up front ---------- */
@@ -1003,8 +1004,9 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   .beta { grid-template-columns: 1fr; gap: 32px; padding: 36px 28px; }
 }
 @media (max-width: 640px) {
-  .trades { gap: 6px; margin-bottom: 18px; }
-  .trades li { font-size: 12.5px; padding: 5px 11px; }
+  .trades { gap: 6px; margin-bottom: 20px; }
+  .trades li { font-size: 12.5px; gap: 6px; padding: 5px 11px 5px 9px; }
+  .trades svg { width: 14px; height: 14px; }
   .beta { padding: 28px 18px; }
 }
 
@@ -1018,9 +1020,9 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 .scene__photo { position: relative; margin: 0; border-radius: 20px; overflow: hidden; background: var(--grad-soft); }
 .scene__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.06); transition: transform 6s ease-out; }
 .scene.is-active .scene__photo img { transform: none; }
-.scene__tag { position: absolute; left: 16px; top: 16px; display: inline-block; max-width: calc(100% - 32px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 7px 14px; border-radius: 999px; background: rgba(255,255,255,.92); box-shadow: var(--shadow-sm); font-size: 13px; font-weight: 500; color: var(--muted); }
+.scene__tag { position: absolute; left: 16px; top: 16px; display: inline-block; max-width: calc(100% - 32px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 7px 14px 7px 11px; border-radius: 999px; background: rgba(255,255,255,.92); box-shadow: var(--shadow-sm); font-size: 13px; font-weight: 500; color: var(--muted); }
 .scene__tag b { font-weight: 700; color: var(--ink); }
-.scene__tag::before { content: ""; display: inline-block; vertical-align: middle; width: 6px; height: 6px; margin: -2px 8px 0 0; border-radius: 50%; background: var(--grad); }
+.scene__tag svg { display: inline-block; vertical-align: -3px; width: 15px; height: 15px; margin-right: 7px; color: var(--c1); }
 .scene__chat { display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; background: #fbf9f8; border: 1px solid var(--line); }
 .scene__head { display: flex; align-items: center; gap: 10px; padding: 14px 16px; background: var(--grad); color: #fff; }
 .scene__head .wm__avatar { width: 34px; height: 34px; background: rgba(255,255,255,.2); border-color: rgba(255,255,255,.35); }
