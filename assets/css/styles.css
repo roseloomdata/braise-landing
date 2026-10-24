@@ -158,8 +158,7 @@ svg { display: block; }
 }
 .sticker svg { width: 36px; height: 36px; color: var(--c1); }
 .sticker--1 { left: 2%; top: 150px; transform: rotate(-12deg); }
-.sticker--2 { right: 2%; top: 110px; transform: rotate(10deg); animation-delay: -2.5s; }
-.sticker--3 { right: 9%; top: 330px; width: 56px; height: 56px; border-radius: 17px; transform: rotate(-6deg); animation-delay: -4s; }
+.sticker--3 { right: 7%; top: 130px; width: 56px; height: 56px; border-radius: 17px; transform: rotate(-6deg); animation-delay: -4s; }
 .sticker--3 svg { width: 26px; height: 26px; }
 @keyframes bob { 0%,100% { translate: 0 0; } 50% { translate: 0 -12px; } }
 
@@ -186,6 +185,9 @@ svg { display: block; }
 .dash__nav svg { width: 18px; height: 18px; }
 .dash__nav.is-active { background: #fff2e8; color: var(--c1); }
 .dash__nav--end { margin-top: auto; }
+/* Settings stay out of the demo: the gear is decoration only */
+.dash__nav--static, .dash__nav--static:hover { cursor: default; background: transparent; color: #a39a93; }
+.dash__nav--static::after { content: none; }
 .dash__main { padding: 18px 22px 24px; display: grid; gap: 14px; }
 .dash__top { display: flex; align-items: center; gap: 10px; }
 .dash__date, .dash__search { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 10px; background: #fff; border: 1px solid var(--line); color: var(--muted); font-weight: 500; }
@@ -246,7 +248,7 @@ svg { display: block; }
 @keyframes spark { 0% { opacity: 0; transform: translate(0, 0) scale(1); } 15% { opacity: var(--heat); } 100% { opacity: 0; transform: translate(8px, -80px) scale(.3); } }
 .panel--center { display: flex; flex-direction: column; align-items: center; text-align: center; }
 .gauge { width: 130px; margin-top: 14px; }
-.gauge__num { font-size: 20px; font-weight: 800; color: var(--ink); letter-spacing: -0.03em; margin-top: -8px; }
+.gauge__num { font-size: 20px; font-weight: 800; color: var(--ink); letter-spacing: -0.03em; margin-top: -30px; margin-bottom: 10px; }
 .gauge__num span { font-size: 12px; color: var(--muted); font-weight: 600; }
 .donut { position: relative; width: 96px; height: 96px; margin-top: 10px; }
 .donut svg { width: 100%; height: 100%; }
@@ -652,7 +654,6 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 
 /* ---------- Ardi (brand mascot — never inside the chat widget) ---------- */
 .wm__avatar svg { width: 18px; height: 18px; color: #fff; }
-.sticker--ardi svg { width: 40px; height: 48px; }
 .cta__ardi { position: absolute; left: 50%; bottom: 0; width: 84px; height: 102px; translate: -50% 0; filter: drop-shadow(0 14px 22px rgba(150, 45, 0, .35)); overflow: visible; }
 /* The dashboard's .ardi-heat fire, resized around the CTA mascot */
 .ardi-heat--cta { position: relative; right: auto; bottom: auto; width: 120px; height: 128px; margin: 0 auto 20px; animation: bob 6s ease-in-out infinite; }
@@ -735,7 +736,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 /* ---------- Dashboard tabs: example views ---------- */
 .dash__view { display: grid; gap: 14px; align-content: start; min-height: var(--view-h, auto); animation: view-in .3s ease both; }
 .dash__view:not([data-view="home"]) > * { min-height: 0; }
-.v-convs, .v-stats, .v-settings { align-items: stretch; }
+.v-convs, .v-stats { align-items: stretch; }
 
 .dash__view[hidden] { display: none; }
 @keyframes view-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
@@ -745,6 +746,10 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 
 .kpi em.is-flat { color: var(--muted); }
 .dash__view:not([data-view="home"]) { grid-template-rows: auto 1fr; }
+/* Home is the shortest view: its bottom row fills the height locked by the tallest one */
+.dash__view[data-view="home"] { grid-template-rows: auto auto 1fr; }
+.dash__grid--2 .panel { display: flex; flex-direction: column; }
+.dash__grid--2 .area { flex: 1; min-height: 110px; }
 
 /* Conversations */
 .v-convs { display: grid; grid-template-columns: 1fr 1.25fr; gap: 12px; }
@@ -824,29 +829,9 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 .v-ev--alt { background: #fff; color: var(--c1); border: 1px solid #ffdcc4; box-shadow: none; }
 .v-ev--alt small { color: var(--muted); opacity: 1; }
 
-.v-settings { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.v-field { margin-top: 12px; }
-.v-field > span, .v-toggle span { display: block; font-size: 11px; font-weight: 600; color: var(--muted); margin-bottom: 5px; }
-.v-input { padding: 7px 10px; border: 1px solid var(--line); border-radius: 9px; font-size: 11.5px; color: var(--ink); background: #fff; }
-.v-input--select { display: flex; justify-content: space-between; }
-.v-input em { font-style: normal; font-size: 10px; font-weight: 700; color: var(--c1); background: #fff2e8; padding: 1px 7px; border-radius: 999px; }
-.v-seg { display: inline-flex; padding: 3px; border-radius: 9px; background: #f6f0ed; }
-.v-seg i { font-style: normal; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 7px; color: var(--muted); }
-.v-seg i.is-on { background: #fff; color: var(--ink); box-shadow: var(--shadow-sm); }
-.v-toggle { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
-.v-toggle span { margin: 0; }
-.v-toggle i { width: 30px; height: 17px; border-radius: 99px; background: #ece6e1; position: relative; }
-.v-toggle i::after { content: ""; position: absolute; left: 2px; top: 2px; width: 13px; height: 13px; border-radius: 50%; background: #fff; }
-.v-toggle i.is-on { background: var(--grad); }
-.v-toggle i.is-on::after { left: 15px; }
-.v-colors { display: flex; gap: 8px; }
-.v-colors i { width: 22px; height: 22px; border-radius: 50%; background: var(--c); }
-.v-colors i.is-on { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--c); }
-.v-srcs { display: flex; flex-wrap: wrap; gap: 6px; }
-.v-srcs b { font-size: 10.5px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line); background: #fdfbf8; color: var(--ink); }
 
 @media (max-width: 960px) {
-  .v-convs, .v-stats, .v-settings { grid-template-columns: 1fr; }
+  .v-convs, .v-stats { grid-template-columns: 1fr; }
   .v-convs__list, .v-table th:nth-child(3), .v-table td:nth-child(3), .v-table th:nth-child(5), .v-table td:nth-child(5), .v-table th:nth-child(6), .v-table td:nth-child(6) { display: none; }
   .v-cal { grid-template-columns: 30px repeat(3, 1fr); }
   .v-day:nth-child(n+5) { display: none; }
@@ -855,6 +840,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 /* ---------- Mobile polish ---------- */
 @media (max-width: 960px) {
   .dash__view[data-view="home"] { min-height: 0; }
+  .convs li:nth-child(n+4) { display: none; }
 }
 @media (max-width: 640px) {
   .device { --tilt: 4deg; margin-top: 40px; }
@@ -872,10 +858,11 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 .w-intro__avatar svg { width: 28px; height: 34px; }
 .w-intro b { font-size: 16px; color: var(--ink); letter-spacing: -0.01em; }
 .w-intro p { margin-top: 4px; font-size: 13px; color: var(--muted); line-height: 1.5; max-width: 270px; }
-.widget__chips { display: grid; gap: 6px; padding: 8px 0 4px; background: none; margin-top: auto; }
-.widget .widget__chips button { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 11px 14px; border-radius: 12px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 13.5px; font-weight: 600; text-align: left; transition: border-color .2s, background .2s, transform .2s; }
-.widget .widget__chips button svg { width: 14px; height: 14px; color: var(--c1); transition: transform .2s; }
-.widget .widget__chips button:hover { border-color: #ffc9a8; background: #fffaf6; }
+/* Suggested questions: pills on the visitor's side, like the replies they become */
+.widget__chips { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; padding: 8px 0 4px; background: none; margin-top: auto; }
+.widget .widget__chips button { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; border: 1px solid #ffdcc4; background: #fff; color: var(--c1); font-size: 13.5px; font-weight: 600; transition: border-color .2s, background .2s; }
+.widget .widget__chips button svg { width: 12px; height: 12px; transition: transform .2s; }
+.widget .widget__chips button:hover { border-color: #ffc9a8; background: #fff2e8; }
 .widget .widget__chips button:hover svg { transform: translate(2px, -2px); }
 .w-msg { display: flex; align-items: flex-end; gap: 8px; }
 .w-msg .bubble { margin: 0; }

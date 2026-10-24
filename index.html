@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=202610251000" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=202610251400" />
   <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -131,8 +131,8 @@
         </ul>
 
         <p class="hero__lead">
-          Braise répond à vos demandes de devis en 2 secondes, qualifie chaque
-          projet et prend rendez-vous pour vous, même le soir et le week-end.
+          Braise répond à vos prospects en 2 secondes, qualifie leur projet
+          et cale la visite technique. Même le soir et le week-end.
         </p>
 
         <div class="hero__actions">
@@ -153,8 +153,7 @@
         </ul>
 
         <!-- floating stickers -->
-        <span class="sticker sticker--1 sticker--ardi" aria-hidden="true"><svg viewBox="4 2 36 44"><use href="#mark"/></svg></span>
-        <span class="sticker sticker--2" aria-hidden="true"><svg><use href="#i-shield"/></svg></span>
+        <span class="sticker sticker--1" aria-hidden="true"><svg><use href="#i-shield"/></svg></span>
         <span class="sticker sticker--3" aria-hidden="true"><svg><use href="#i-zap"/></svg></span>
       </div>
 
@@ -170,7 +169,7 @@
                 <button class="dash__nav" role="tab" aria-selected="false" data-view="leads" data-label="Leads" aria-label="Leads"><svg><use href="#i-users"/></svg></button>
                 <button class="dash__nav" role="tab" aria-selected="false" data-view="stats" data-label="Statistiques" aria-label="Statistiques"><svg><use href="#i-chart"/></svg></button>
                 <button class="dash__nav" role="tab" aria-selected="false" data-view="agenda" data-label="Agenda" aria-label="Agenda"><svg><use href="#i-cal"/></svg></button>
-                <button class="dash__nav dash__nav--end" role="tab" aria-selected="false" data-view="settings" data-label="Réglages" aria-label="Réglages"><svg><use href="#i-gear"/></svg></button>
+                <span class="dash__nav dash__nav--end dash__nav--static" aria-hidden="true"><svg><use href="#i-gear"/></svg></span>
               </nav>
             </aside>
 
@@ -229,7 +228,7 @@
                   <small>Évaluée par vos visiteurs</small>
                   <svg class="gauge" viewBox="0 0 120 70">
                     <path d="M10 62 A50 50 0 0 1 110 62" stroke="#f3e8e2" stroke-width="10" fill="none" stroke-linecap="round"/>
-                    <path class="gauge__val" d="M10 62 A50 50 0 0 1 110 62" stroke="url(#g-brand)" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="157" stroke-dashoffset="9"/>
+                    <path class="gauge__val" d="M10 62 A50 50 0 0 1 110 62" pathLength="100" stroke="url(#g-brand)" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="90.8 100"/>
                   </svg>
                   <strong class="gauge__num">9,4<span>/10</span></strong>
                 </div>
@@ -262,6 +261,8 @@
                     <li><span class="av av--1">SL</span><div><b>Sophie L.</b><small>« Vous intervenez dans ma commune ? »</small></div><span class="tag tag--green">RDV pris</span></li>
                     <li><span class="av av--2">TM</span><div><b>Thomas M.</b><small>« Quelles aides pour une PAC ? »</small></div><span class="tag tag--blue">Qualifié</span></li>
                     <li><span class="av av--3">IB</span><div><b>Inès B.</b><small>« Quel délai de pose ? »</small></div><span class="tag">Nouveau</span></li>
+                    <li><span class="av av--4">MD</span><div><b>Marc D.</b><small>« Une véranda sur 20 m², c'est possible ? »</small></div><span class="tag tag--blue">Qualifié</span></li>
+                    <li><span class="av av--1">CP</span><div><b>Claire P.</b><small>« Liner ou coque pour la piscine ? »</small></div><span class="tag tag--green">RDV pris</span></li>
                   </ul>
                 </div>
                 <div class="panel">
@@ -269,8 +270,8 @@
                   <svg class="area" viewBox="0 0 300 110" preserveAspectRatio="none">
                     <defs><linearGradient id="g-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8501e" stop-opacity=".28"/><stop offset="1" stop-color="#e8501e" stop-opacity="0"/></linearGradient></defs>
                     <path d="M0 80 C30 76 45 70 70 72 S115 60 140 58 S190 40 215 44 S260 22 300 14 L300 110 L0 110Z" fill="url(#g-area)"/>
-                    <path d="M0 80 C30 76 45 70 70 72 S115 60 140 58 S190 40 215 44 S260 22 300 14" fill="none" stroke="#e8501e" stroke-width="2.5"/>
-                    <path d="M0 90 C40 88 60 84 90 86 S150 78 180 76 S240 70 300 64" fill="none" stroke="#dcc6c0" stroke-width="2" stroke-dasharray="4 4"/>
+                    <path d="M0 80 C30 76 45 70 70 72 S115 60 140 58 S190 40 215 44 S260 22 300 14" fill="none" stroke="#e8501e" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+                    <path d="M0 90 C40 88 60 84 90 86 S150 78 180 76 S240 70 300 64" fill="none" stroke="#dcc6c0" stroke-width="2" stroke-dasharray="4 4" vector-effect="non-scaling-stroke"/>
                   </svg>
                 </div>
               </div>
@@ -401,30 +402,6 @@
                     <div class="v-day"><b class="v-day__name">Mer 24</b><div class="v-day__slots"><span class="v-ev v-ev--alt" style="--start:1;--len:1"><b>10:00 · Inès B.</b><small>Cuisine sur mesure</small></span><span class="v-ev" style="--start:7;--len:1"><b>16:00 · Paul V.</b><small>Pompe à chaleur</small></span></div></div>
                     <div class="v-day is-today"><b class="v-day__name">Jeu 25</b><div class="v-day__slots"><span class="v-ev" style="--start:1;--len:1"><b>10:00 · Sophie L.</b><small>PAC · Villeurbanne</small></span><span class="v-ev" style="--start:4;--len:1"><b>13:00 · Nora K.</b><small>Piscine coque</small></span></div></div>
                     <div class="v-day"><b class="v-day__name">Ven 26</b><div class="v-day__slots"><span class="v-ev v-ev--alt" style="--start:2;--len:1"><b>11:00 · Lucas R.</b><small>Fenêtres PVC</small></span><span class="v-ev" style="--start:8;--len:1"><b>17:00 · Julie M.</b><small>Cuisine</small></span></div></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Réglages -->
-              <div class="dash__view" data-view="settings" hidden>
-                <div class="v-settings">
-                  <div class="panel">
-                    <h5>Votre assistant</h5>
-                    <small>Personnalité et comportement</small>
-                    <div class="v-field"><span>Ton</span><div class="v-seg"><i>Formel</i><i class="is-on">Chaleureux</i><i>Direct</i></div></div>
-                    <div class="v-field"><span>Message d'accueil</span><div class="v-input">Bonjour ! Parlez-moi de votre projet, je vous réponds tout de suite.</div></div>
-                    <div class="v-field"><span>Objectif principal</span><div class="v-input">Planifier une visite technique</div></div>
-                    <div class="v-toggle"><span>Ouverture proactive après 20 s</span><i class="is-on"></i></div>
-                    <div class="v-toggle"><span>Filtrer les demandes hors zone (40 km)</span><i class="is-on"></i></div>
-                    <div class="v-toggle"><span>Alerte WhatsApp pour chaque demande qualifiée</span><i class="is-on"></i></div>
-                  </div>
-                  <div class="panel">
-                    <h5>Apparence & modèle</h5>
-                    <small>Adapté à votre site</small>
-                    <div class="v-field"><span>Couleur du widget</span><div class="v-colors"><i style="--c:#2563eb" class="is-on"></i><i style="--c:#16a34a"></i><i style="--c:#111827"></i><i style="--c:#e8501e"></i><i style="--c:#9333ea"></i></div></div>
-                    <div class="v-field"><span>Position</span><div class="v-seg"><i>Gauche</i><i class="is-on">Droite</i></div></div>
-                    <div class="v-field"><span>Modèle d'IA</span><div class="v-input v-input--select">Braise AI <em>par défaut</em></div></div>
-                    <div class="v-field"><span>Sources de connaissance</span><div class="v-srcs"><b>votre-site.fr · 24 pages</b><b>Réalisations.pdf</b><b>Zone-intervention.pdf</b><b>FAQ.docx</b></div></div>
                   </div>
                 </div>
               </div>
@@ -1116,7 +1093,7 @@
     </button>
   </div>
 
-  <script src="assets/js/main.js?v=202610251000" defer></script>
-  <script src="assets/js/effects.js?v=202610251000" defer></script>
+  <script src="assets/js/main.js?v=202610251400" defer></script>
+  <script src="assets/js/effects.js?v=202610251400" defer></script>
 </body>
 </html>
